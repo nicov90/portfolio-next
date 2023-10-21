@@ -3,9 +3,8 @@
   box-sizing: border-box;
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   font-size: 3rem;
 }
 
@@ -32,7 +31,8 @@
 .mainDiv::after {
   background: var(--secondary-glow);
   border-radius: 50%;
-  width: 600px;
+  width: calc(50vw + 50px);
+  max-width: 600px;
   height: 700px;
   filter: blur(90px);
   top: calc(50vh - 50vw / 2);
@@ -60,11 +60,17 @@
   }
 }
 
+.hiImTxt{
+  font-size: 2.4rem;
+  font-weight: 200;
+  user-select: none;
+}
+
 .myName {
   position: relative;
   -webkit-text-stroke: 2px #0000004f;
   user-select: none;
-  font-size: 38px;
+  font-size: 2.4rem;
   font-weight: 300 !important;
   margin-top: 0 !important;
   color: #00000000 !important;
@@ -92,27 +98,41 @@
     width: 0%;
     border-right: 2px solid black;
   }
-  30%{
+  30% {
     width: 100%;
     border-right: 2px solid black;
   }
-  40%{
+  40% {
     border-right: none;
   }
-  /*50%{
-    border-right: 2px solid black;
-  }*/
-  60%{
+  60% {
     border-right: none;
   }
-  /*70%{
-    border-right: 2px solid black;
-  }*/
-  80%{
+  80% {
     border-right: none;
   }
-  90%{
+  90% {
     width: 100%;
-    /*border-right: 2px solid black;*/
+  }
+}
+
+.clickDiv{
+  position: absolute; 
+  top: 100%;
+  height: 50vh;
+}
+
+@media screen and (max-width: 768px) {
+  .hiImTxt, .myName {
+    font-size: 2rem;
+  }
+  .mainDiv::before {
+    height: 90vh;
+  }
+  
+  .mainDiv::after {
+    width: 75vw;
+    height: 80vh;
+    top: 0;
   }
 }
