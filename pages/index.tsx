@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import IntroScreen from '@/components/IntroScreen';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,4 +20,12 @@ export default function Home() {
       </main>
     </>
   )
+}
+
+export async function getStaticProps({ locale }: { locale: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['intro'])),
+    }
+  }
 }

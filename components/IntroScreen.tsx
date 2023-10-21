@@ -4,12 +4,16 @@ import { motion } from "framer-motion";
 import { useRouter } from "next/router";
 import { backgroundExit, backgroundStart, divExit, divStart, textMotion } from "@/animations/introScreen";
 import AnimatedTextWord from "./utils/AnimatedTextWord";
-import { Select } from "antd";
-import Image from "next/image";
+import LanguageSelector from "./ui/LanguageSelector";
+import { useDispatch, useSelector } from "react-redux";
+import { setStartExitAnimation } from "@/redux/slices/animations";
+import { useTranslation } from "next-i18next";
 
 const IntroScreen = () => {
-  const router = useRouter();
-  const [startExitAnimation, setStartExitAnimation] = useState(false);
+  const { t: translate } = useTranslation('intro');
+  const { push } = useRouter();
+  const dispatch = useDispatch();
+  const { startExitAnimation } = useSelector((state: any) => state.animations);
   const [startAnimationEnded, setStartAnimationEnded] = useState(false);
 
   const backgroundMotion = startExitAnimation ? backgroundExit : backgroundStart;
@@ -17,29 +21,17 @@ const IntroScreen = () => {
 
   const goToHome = () => {
     if(startAnimationEnded){
-      setStartExitAnimation(true);
+      dispatch(setStartExitAnimation(true));
       setTimeout(() => {
-        router.push("/home");
+        push("/home");
+        dispatch(setStartExitAnimation(false));
       },750);
     }
   }
 
   return (
     <>
-      <motion.div {...divMotion} className="languageSelectorDiv">
-        <motion.div>
-          <Select defaultValue="English">
-            <Select.Option value="English">
-              <Image src="/assets/ENG.png" width={32} height={32} alt="English" style={{ marginRight: 6 }}/>
-              English
-            </Select.Option>
-            <Select.Option value="Español">
-              <Image src="/assets/SPA.png" width={32} height={32} alt="Español" style={{ marginRight: 6 }}/>
-              Español
-            </Select.Option>
-          </Select>
-        </motion.div>
-      </motion.div>
+      <LanguageSelector />
       <motion.div 
         className={styles.mainDiv} 
         {...backgroundMotion}
@@ -60,7 +52,7 @@ const IntroScreen = () => {
               className={styles.hiImTxt}
               {...textMotion}
             >
-              Hi, I&#39;m&#160;
+              {translate("hi im")}&#160;
             </motion.h5>
             <motion.h5
               className={styles.myName}
@@ -73,11 +65,11 @@ const IntroScreen = () => {
             style={{ fontSize: 24, fontWeight: 200, userSelect: "none" }}
             {...textMotion}
           >
-            Web Developer
+            {translate("jobName")}
           </motion.p>
           <motion.div {...divMotion} className={styles.clickDiv}>
             <AnimatedTextWord
-              text="Click anywhere"
+              text={translate("clickTxt")}
               delay={25}
               speed={0.75}
               styles={{ fontSize: "1.1rem", fontWeight: 700, userSelect: "none" }}

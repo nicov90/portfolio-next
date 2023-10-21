@@ -36,6 +36,7 @@ div {
 
 .languageSelectorDiv{
   position: absolute;
+  top: 0;
   padding: 25px;
   right: 5px;
 }
@@ -43,7 +44,6 @@ div {
 .ant-select-selector{
   width: 120px !important;
   border-color: rgba(255, 255, 255, 0.4) !important;
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.1) !important;
 }
 
 .ant-select-selection-item{

@@ -4,13 +4,18 @@ import { ConfigProvider } from 'antd';
 import type { AppProps } from 'next/app';
 import theme from '../theme/themeConfig';
 import { AnimatePresence } from 'framer-motion';
+import { Provider } from 'react-redux';
+import { store } from '@/redux/store';
+import { appWithTranslation } from 'next-i18next';
 
 const App = ({ Component, pageProps }: AppProps) => (
-  <ConfigProvider theme={theme}>
-    <AnimatePresence >
-      <Component {...pageProps} />
-    </AnimatePresence>
-  </ConfigProvider>
+  <Provider store={store}>
+    <ConfigProvider theme={theme}>
+      <AnimatePresence >
+        <Component {...pageProps} />
+      </AnimatePresence>
+    </ConfigProvider>
+  </Provider>
 );
 
-export default App;
+export default appWithTranslation(App);
