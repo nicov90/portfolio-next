@@ -1,7 +1,7 @@
 export const backgroundStart = {
   initial: {
     background:
-      "radial-gradient(circle,rgba(2, 0, 28, 0) 0%,rgba(74, 134, 186, 0.1) 15%,rgb(3, 51, 73) 80%)",
+      "radial-gradient(circle,rgba(2, 0, 28, 0) 0%,rgba(74, 134, 186, 0.1) 15%,rgb(3, 51, 73) 78%)",
   },
   animate: {
     background:

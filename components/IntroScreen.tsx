@@ -41,6 +41,9 @@ const IntroScreen = () => {
       >
         <motion.div
           style={{
+            display: "flex", 
+            justifyContent: "center", 
+            alignItems: "center",
             position: "relative",
             flexDirection: "column",
             gap: 6,

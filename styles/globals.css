@@ -30,8 +30,10 @@ a {
 
 div {
   display: flex;
-  justify-content: center;
-  align-items: center;
+}
+
+li {
+  list-style: none;
 }
 
 .languageSelectorDiv{
@@ -55,6 +57,7 @@ div {
 
 .ant-select-dropdown, .ant-select-item, .ant-select-item-option-selected, .ant-select-item-option-content{
   justify-content: flex-start;
+  align-items: center;
   width: 100%;
   padding: 5px 6px !important;
   background-color: rgba(0, 0, 0, 0.1) !important;

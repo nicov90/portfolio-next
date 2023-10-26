@@ -24,7 +24,7 @@ const LanguageSelector = () => {
               alt="English"
               {...selectOptionStyles}
             />
-            English
+            <p style={{ color: pathname !== "/" ? "black" : "white", fontWeight: "600" }}>English</p>
           </Select.Option>
           <Select.Option value="es">
             <Image
@@ -32,7 +32,7 @@ const LanguageSelector = () => {
               alt="Español"
               {...selectOptionStyles}
             />
-            Español
+            <p style={{ color: pathname !== "/" ? "black" : "white", fontWeight: "600" }}>Español</p>
           </Select.Option>
         </Select>
       </motion.div>

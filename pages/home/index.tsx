@@ -2,15 +2,23 @@ import styles from '@/styles/Home.module.css'
 import React from 'react'
 import { motion } from 'framer-motion'
 import Layout from '@/components/ui/Layout'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const HomeScreen = () => {
   return (
-    <>
-      <Layout>
+    <Layout title="Home">
 
-      </Layout>
-    </>
+    </Layout>
   )
 }
+
+export async function getStaticProps({ locale }: { locale: string }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common','home'])),
+    }
+  }
+}
+
 
 export default HomeScreen
