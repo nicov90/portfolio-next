@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from 'react-redux';
 import { motion } from "framer-motion";
-import { Select } from "antd";
+import { Divider, Select } from "antd";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { divExit, divStart } from "@/animations/introScreen";
@@ -17,6 +17,11 @@ const LanguageSelector = () => {
         <Select
           value={locale || "en"}
           onChange={(locale) => push(pathname, undefined, { locale })}
+          style={{ 
+            backgroundColor: pathname !== "/" ? "rgba(255, 255, 255, 0.5)" : "transparent" ,
+            boxShadow: "0 0 8px 0px rgba(25, 25, 25, 0.15)",
+            borderRadius: 5,
+          }}
         >
           <Select.Option value="en">
             <Image
