@@ -11,7 +11,7 @@ import { appWithTranslation } from 'next-i18next';
 const App = ({ Component, pageProps }: AppProps) => (
   <Provider store={store}>
     <ConfigProvider theme={theme}>
-      <AnimatePresence >
+      <AnimatePresence mode='wait'>
         <Component {...pageProps} />
       </AnimatePresence>
     </ConfigProvider>

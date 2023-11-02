@@ -8,6 +8,7 @@ import LanguageSelector from "./ui/LanguageSelector";
 import { useDispatch, useSelector } from "react-redux";
 import { setStartExitAnimation } from "@/redux/slices/animations";
 import { useTranslation } from "next-i18next";
+import CirclesBackground from "./ui/CirclesBackground";
 
 const IntroScreen = () => {
   const { t: translate } = useTranslation('intro');
@@ -32,6 +33,7 @@ const IntroScreen = () => {
   return (
     <>
       <LanguageSelector />
+      <CirclesBackground />
       <motion.div 
         className={styles.mainDiv} 
         {...backgroundMotion}
