@@ -12,7 +12,7 @@ import CirclesBackground from "./ui/CirclesBackground";
 
 const IntroScreen = () => {
   const { t: translate } = useTranslation('intro');
-  const { push } = useRouter();
+  const { push, locale } = useRouter();
   const dispatch = useDispatch();
   const { startExitAnimation } = useSelector((state: any) => state.animations);
   const [startAnimationEnded, setStartAnimationEnded] = useState(false);
@@ -24,7 +24,7 @@ const IntroScreen = () => {
     if(startAnimationEnded){
       dispatch(setStartExitAnimation(true));
       setTimeout(() => {
-        push("/home");
+        push("/home/about", undefined, { locale });
         dispatch(setStartExitAnimation(false));
       },750);
     }

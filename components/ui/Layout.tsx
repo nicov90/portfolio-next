@@ -49,7 +49,15 @@ const Layout = ({ title = 'Nicolas Valdez', children }: { title: string, childre
                         duration: 0.2,
                       },
                     }}
-                    onClick={() => router.push(`/${item.toLowerCase()}`)}
+                    style={{
+                      color: item === title ? "rgba(0, 100, 180, 1)" : "inherit",
+                    }}
+                    onClick={() => {
+                      if(item !== title){
+                        let url = item === "About me" ? "/home/about" : `/home/${item.toLowerCase()}`;
+                        router.push(url);
+                      }
+                    }}
                   >
                     {translate(item)}
                   </motion.li>
