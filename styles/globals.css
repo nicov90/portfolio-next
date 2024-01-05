@@ -46,6 +46,7 @@ li {
   top: 0;
   padding: 25px;
   right: 5px;
+  z-index: 999;
 }
 
 .ant-select-selector{
@@ -86,3 +87,10 @@ li {
 .ant-select-item-option-content{
   padding: 0 4px 0 4px;
 }
+
+/* @media (prefers-color-scheme: dark) {
+  body {
+    color: white;
+    background: black;
+  }
+} */

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import styles from "@/styles/Layout.module.css";
 import LanguageSelector from "./LanguageSelector";
-import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
@@ -11,7 +10,7 @@ import CirclesBackground from "./CirclesBackground";
 
 const Layout = ({ title = 'Nicolas Valdez', children }: { title: string, children: React.ReactNode }) => {
   const { t: translate } = useTranslation('common');
-  const { startExitAnimation } = useSelector((state: any) => state.animations);
+  const [startExitAnimation, setStartExitAnimation] = useState(false);
 
   const divMotion = startExitAnimation ? divExitConOpacity : divStartConOpacity;
   const router = useRouter();
@@ -22,13 +21,6 @@ const Layout = ({ title = 'Nicolas Valdez', children }: { title: string, childre
         <title>{title ? title + ' | Nicolas Valdez' : title}</title>
       </Head>
       <CirclesBackground />
-      {/* <motion.div
-        className={styles.mainDiv}
-        animate={{
-          background:
-            "radial-gradient(circle,rgba(2, 0, 28, 0) 0%,rgba(74, 134, 186, 0.1) 100%,rgba(3, 51, 73, 0.5) 100%)",
-        }}
-      > */}
         <motion.div 
           className={styles.mainDiv}
           {...divMotion}
@@ -44,13 +36,13 @@ const Layout = ({ title = 'Nicolas Valdez', children }: { title: string, childre
                     key={index} 
                     className={styles.sectionElements}
                     whileHover={{
-                      color: "rgba(0, 100, 180, 1)",
+                      color: "rgba(0, 150, 220, 1)",
                       transition: {
                         duration: 0.2,
                       },
                     }}
                     style={{
-                      color: item === title ? "rgba(0, 100, 180, 1)" : "inherit",
+                      color: item === title ? "rgba(0, 150, 220, 1)" : "inherit",
                     }}
                     onClick={() => {
                       if(item !== title){
@@ -66,20 +58,22 @@ const Layout = ({ title = 'Nicolas Valdez', children }: { title: string, childre
             </ul>
             <div className={styles.linksDiv}></div>
           </motion.div>
-          <motion.div 
-            className={styles.contentDiv}
+          <motion.div
             style={{
               position: "relative",
+              display: "flex",
+              flexDirection: "column",
+              // alignItems: "center",
               width: "100%", 
               maxHeight: "100vh", 
-              overflow: "auto", 
-              backgroundColor: 'rgba(255, 255, 255, 0.2)',
+              overflow: "auto",
+              backgroundColor: 'rgba(255, 255, 255, 0.15)',
+              padding: 25,
             }}>
             <LanguageSelector />
             {children}
           </motion.div>
         </motion.div>
-      {/* </motion.div> */}
     </>
   );
 };

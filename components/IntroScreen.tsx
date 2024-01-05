@@ -5,16 +5,14 @@ import { useRouter } from "next/router";
 import { backgroundExit, backgroundStart, divExit, divStart, textMotion } from "@/animations/introScreen";
 import AnimatedTextWord from "./utils/AnimatedTextWord";
 import LanguageSelector from "./ui/LanguageSelector";
-import { useDispatch, useSelector } from "react-redux";
-import { setStartExitAnimation } from "@/redux/slices/animations";
 import { useTranslation } from "next-i18next";
 import CirclesBackground from "./ui/CirclesBackground";
+import ThemeToggle from "./ui/ThemeToggle";
 
 const IntroScreen = () => {
   const { t: translate } = useTranslation('intro');
   const { push, locale } = useRouter();
-  const dispatch = useDispatch();
-  const { startExitAnimation } = useSelector((state: any) => state.animations);
+  const [startExitAnimation, setStartExitAnimation] = useState(false);
   const [startAnimationEnded, setStartAnimationEnded] = useState(false);
 
   const backgroundMotion = startExitAnimation ? backgroundExit : backgroundStart;
@@ -22,16 +20,16 @@ const IntroScreen = () => {
 
   const goToHome = () => {
     if(startAnimationEnded){
-      dispatch(setStartExitAnimation(true));
+      setStartExitAnimation(true);
       setTimeout(() => {
         push("/home/about", undefined, { locale });
-        dispatch(setStartExitAnimation(false));
       },750);
     }
   }
 
   return (
     <>
+      {/* <ThemeToggle /> */}
       <LanguageSelector />
       <CirclesBackground />
       <motion.div 
