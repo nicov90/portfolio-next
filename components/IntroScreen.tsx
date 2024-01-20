@@ -22,7 +22,7 @@ const IntroScreen = () => {
     if(startAnimationEnded){
       setStartExitAnimation(true);
       setTimeout(() => {
-        push("/home/about", undefined, { locale });
+        push("/home", undefined, { locale });
       },750);
     }
   }
@@ -75,7 +75,7 @@ const IntroScreen = () => {
               text={translate("clickTxt")}
               delay={25}
               speed={0.75}
-              styles={{ fontSize: "1.1rem", fontWeight: 700, userSelect: "none" }}
+              stylesWord={{ fontSize: "1.1rem", fontWeight: 700, userSelect: "none" }}
             />
           </motion.div>
         </motion.div>

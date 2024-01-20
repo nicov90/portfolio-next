@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
-import { motion } from "framer-motion";
+import React from "react";
+import { TargetAndTransition, VariantLabels, motion } from "framer-motion";
 
 interface Props{
   text: string,
   delay?: number,
   speed?: number,
-  styles?: React.CSSProperties,
+  stylesDiv?: React.CSSProperties,
+  stylesWord?: React.CSSProperties,
+  whileHoverStyles?: VariantLabels | TargetAndTransition,
 }
-const AnimatedTextWord = ({ text, delay = 1, speed = 1, styles }: Props) => {
+const AnimatedTextWord = ({ text, delay = 1, speed = 1, stylesDiv, stylesWord, whileHoverStyles }: Props) => {
   const words = text.split(" ");
 
   const container = {
@@ -41,15 +43,16 @@ const AnimatedTextWord = ({ text, delay = 1, speed = 1, styles }: Props) => {
 
   return (
     <motion.div
-      style={{ overflow: "hidden", display: "flex", fontSize: "2rem" }}
+      style={{ overflow: "hidden", display: "flex", fontSize: "2rem", ...stylesDiv }}
       variants={container}
       initial="hidden"
       animate="visible"
+      whileHover={whileHoverStyles}
     >
       {words.map((word, index) => (
         <motion.span 
           key={index} 
-          style={{ marginRight: "5px", ...styles }}
+          style={{ marginRight: "5px", ...stylesWord }}
           variants={child}
         >
           {word}

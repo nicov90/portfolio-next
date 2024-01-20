@@ -1,11 +1,13 @@
+import About from '@/components/about/AboutPage';
 import Layout from '@/components/ui/Layout'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import React from 'react'
 
-const Experience = () => {
+const Index = () => {
   return (
-    <Layout title="Experience">
-
+    <Layout title="Home">
+      {/* <About /> */}
+      <></>
     </Layout>
   )
 }
@@ -13,9 +15,9 @@ const Experience = () => {
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common','experience'])),
+      ...(await serverSideTranslations(locale, ['common','contact','experience','skills','projects'])),
     }
   }
 }
 
-export default Experience
+export default Index

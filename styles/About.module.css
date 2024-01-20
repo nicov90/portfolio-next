@@ -1,5 +1,4 @@
 .container{
-  /* display: flex; */
   display: grid;
   grid-template-rows: 15% 1fr;
   /* flex-direction: column; */
@@ -12,9 +11,9 @@
   flex-direction: column;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(10px) saturate(200%);
-  -webkit-backdrop-filter: blur(10px) saturate(200%);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(100px);
+  -webkit-backdrop-filter: blur(10px);
   transition: all 0.5s ease-in-out;
   padding: 60px;
 }

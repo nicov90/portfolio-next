@@ -1,14 +1,16 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { TargetAndTransition, VariantLabels, motion } from "framer-motion";
 
 interface Props{
   text: string,
   delay?: number,
   speed?: number,
-  styles?: React.CSSProperties,
+  stylesDiv?: React.CSSProperties,
+  stylesWord?: React.CSSProperties,
+  whileHoverStyles?: VariantLabels | TargetAndTransition,
 }
 
-const AnimatedTextCharacter = ({ text, delay = 1, speed = 1, styles }: Props) => {
+const AnimatedTextCharacter = ({ text, delay = 1, speed = 1, stylesDiv, stylesWord, whileHoverStyles }: Props) => {
   const letters = Array.from(text);
 
   const container = {
@@ -44,13 +46,14 @@ const AnimatedTextCharacter = ({ text, delay = 1, speed = 1, styles }: Props) =>
 
   return (
     <motion.div
-      style={{ overflow: "hidden", display: "flex", fontSize: "2rem" }}
+      style={{ overflow: "hidden", display: "flex", fontSize: "2rem", ...stylesDiv }}
       variants={container}
       initial="hidden"
       animate="visible"
+      whileHover={whileHoverStyles}
     >
       {letters.map((letter, index) => (
-        <motion.span variants={child} key={index} style={{ ...styles }}>
+        <motion.span variants={child} key={index} style={{ ...stylesWord }}>
           {letter === " " ? "\u00A0" : letter}
         </motion.span>
       ))}

@@ -4,11 +4,7 @@ import styles from "@/styles/Layout.module.css";
 import { useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 
-interface Props{
-  
-}
-
-const CirclesBackground = ({}: Props) => {
+const CirclesBackground = () => {
   const { pathname } = useRouter();
   const { startExitAnimation } = useSelector((state: any) => state.animations);
 
